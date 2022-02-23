@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/annotations": "^1.0",
@@ -28,6 +28,7 @@
         "symfony/maker-bundle": "^1.37"
     },
     "config": {
+        "platform-check": false,
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
