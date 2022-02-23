@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  database-test:
+    container_name: postgres-test
+    image: postgres:13.3-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5433:5432"
+
+  database:
+    container_name: postgres
+    image: postgres:13.3-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5442:5432"
