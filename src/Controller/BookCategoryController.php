@@ -4,20 +4,27 @@ declare(strict_types = 1);
 namespace App\Controller;
 
 use App\Service\BookCategoryService;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Model\BookCategoryListResponse;
+use OpenApi\Annotations as OA;
 
 class BookCategoryController extends AbstractController
 {
-    /**
-     * BookCategoryController constructor.
-     */
     public function __construct(private BookCategoryService $bookCategoryService)
     {
     }
 
-    #[Route('/api/v1/book/categories')]
+    /**
+     * @OA\Response(
+     *     response=200,
+     *     description="Returns book categories",
+     *     @Model(type=BookCategoryListResponse::class)
+     * )
+     */
+    #[Route(path: '/api/v1/book/categories', methods: ['GET'])]
     public function categories(): Response
     {
         return $this->json($this->bookCategoryService->getCategories());
